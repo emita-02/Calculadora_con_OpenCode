@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculadora de notas para estudiantes de la Escuela Politécnica Nacional: aprueba, examen supletorio o reprobación." />
+  <title>Calculadora de Notas | EPN</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="pagina">
+    <!-- ======================= ENCABEZADO ======================= -->
+    <header class="hero">
+      <span class="hero__distintivo">EPN</span>
+      <h1 class="hero__titulo">Calculadora de Notas</h1>
+      <p class="hero__subtitulo">
+        Verifica si apruebas la materia, si debes rendir el examen supletorio
+        o si no alcanzas la nota mínima, y descubre qué nota necesitas en el supletorio.
+      </p>
+    </header>
+
+    <main class="principal">
+      <!-- ======================= FORMULARIO ======================= -->
+      <section class="tarjeta" aria-labelledby="titulo-formulario">
+        <div class="tarjeta__cabecera">
+          <h2 id="titulo-formulario">Ingresa tus notas</h2>
+        </div>
+
+        <form id="formulario" novalidate>
+          <div class="rejilla">
+            <div class="campo">
+              <label for="bim1">Nota bim1 <span class="rango">(sobre 20)</span></label>
+              <input
+                type="number" id="bim1" name="bim1"
+                min="0" max="20" step="any" inputmode="decimal"
+                placeholder="Ej. 14.5" autocomplete="off"
+                aria-describedby="bim1-ayuda bim1-error" />
+              <small class="ayuda" id="bim1-ayuda">Primera nota del bimestre.</small>
+              <p class="error" id="bim1-error" role="alert" hidden></p>
+            </div>
+
+            <div class="campo">
+              <label for="bim2">Nota bim2 <span class="rango">(sobre 20)</span></label>
+              <input
+                type="number" id="bim2" name="bim2"
+                min="0" max="20" step="any" inputmode="decimal"
+                placeholder="Ej. 13.75" autocomplete="off"
+                aria-describedby="bim2-ayuda bim2-error" />
+              <small class="ayuda" id="bim2-ayuda">Segunda nota del bimestre.</small>
+              <p class="error" id="bim2-error" role="alert" hidden></p>
+            </div>
+          </div>
+
+          <div class="acciones">
+            <button type="submit" class="btn btn--primario">Calcular resultado</button>
+            <button type="button" class="btn btn--secundario" id="btn-limpiar">Limpiar</button>
+          </div>
+
+          <noscript>
+            <p class="error">
+              Esta calculadora necesita JavaScript activado para funcionar.
+            </p>
+          </noscript>
+        </form>
+      </section>
+
+      <!-- ======================= RESULTADO ======================= -->
+      <section class="tarjeta tarjeta--inicio" id="inicio" aria-live="polite">
+        <span class="inicio__icono" aria-hidden="true">🧮</span>
+        <h2>Resultado</h2>
+        <p>
+          Ingresa las dos notas del semestre y presiona <strong>Calcular resultado</strong>
+          para ver la nota final y, si corresponde, la nota que necesitas en el examen supletorio.
+        </p>
+      </section>
+
+      <section class="resultado" id="resultado" aria-live="polite" hidden>
+        <div class="resultado__cabecera">
+          <span class="resultado__icono" id="resultado-icono" aria-hidden="true"></span>
+          <div>
+            <p class="resultado__etiqueta">Resultado</p>
+            <h2 class="resultado__titulo" id="resultado-titulo"></h2>
+          </div>
+        </div>
+
+        <p class="resultado__mensaje" id="resultado-mensaje"></p>
+
+        <div class="resultado__datos" id="resultado-datos"></div>
+      </section>
+
+    </main>
+
+    <footer class="pie">
+      <p>Escuela Politécnica Nacional · Calculadora referencial para control académico personal.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
